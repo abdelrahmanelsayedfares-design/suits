@@ -32,6 +32,7 @@ void showMasg(String? msg, {bool isError = false}) {
           style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
         ),
         duration: Duration(seconds: 2),
+        // Text('الرجاء تفعيل خدمه الوصول الي الموقع')
       ),
     );
   }

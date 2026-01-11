@@ -75,7 +75,7 @@ class _AppImageState extends State<AppImage>
       );
     } else if (widget.image.toLowerCase().endsWith('.json')) {
       child = Lottie.asset(
-        'assets/looties/${widget.image}',
+        'assets/lotties/${widget.image}',
         width: widget.width,
         height: widget.height,
         fit: widget.fit ?? BoxFit.cover,
