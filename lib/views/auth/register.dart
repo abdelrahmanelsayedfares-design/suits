@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suits/core/logic/helper_methods.dart';
 import 'package:suits/core/ui/app_buttom.dart';
 import 'package:suits/core/ui/app_check_box.dart';
 import 'package:suits/core/ui/app_input.dart';
 import 'package:suits/core/ui/app_succes.dart';
+import 'package:suits/views/auth/login.dart';
 
 import '../../core/ui/app_images.dart';
 
@@ -50,13 +52,18 @@ class _RegisterViewState extends State<RegisterView> {
             SizedBox(height: 16.h),
             AppCheckBox(),
             SizedBox(height: 38.h),
-            AppButtom(text: 'Sign Up', onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => AppSucces(text: 'Sign In'),
-              );
-
-            }),
+            AppButtom(
+              text: 'Sign Up',
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) =>
+                      AppSucces(text: 'Sign In', onpressd: () {
+                        goTo(LoginView(),canPop: false);
+                      }),
+                );
+              },
+            ),
             SizedBox(height: 32.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +77,9 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    goTo(LoginView(),canPop: false);
+                  },
                   child: Text(
                     'Sign In',
                     style: TextStyle(

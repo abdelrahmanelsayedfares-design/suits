@@ -70,7 +70,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       onPressed: () {
                         goTo(OnBoarding2(), canPop: false);
                       },
-                      child: Text('Skip'),
+                      child: Text('Skip',style: TextStyle(fontSize: 15.sp,color: Colors.black,fontWeight: FontWeight.w400),),
                     ),
                   ),
                 ),

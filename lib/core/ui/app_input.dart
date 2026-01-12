@@ -6,12 +6,14 @@ import 'app_images.dart';
 class AppInput extends StatefulWidget {
   final String hint, icon;
   final bool isBass;
+  final bool iscolor;
 
   const AppInput({
     super.key,
     required this.hint,
     required this.icon,
     this.isBass = false,
+    this.iscolor=false,
   });
 
   @override
@@ -35,14 +37,27 @@ class _AppInputState extends State<AppInput> {
                     setState(() {});
                   },
                   icon: _obscureText
-                      ? AppImage(image: 'password_off.png',width: 24.w,height: 24.h,)
-                      : AppImage(image: 'password_on.png',width: 24.w,height: 24.h,),
+                      ? AppImage(
+                          image: 'password_off.png',
+                          width: 24.w,
+                          height: 24.h,
+                        )
+                      : AppImage(
+                          image: 'password_on.png',
+                          width: 24.w,
+                          height: 24.h,
+                        ),
                 )
               : null,
           hintText: widget.hint,
           prefixIcon: Padding(
             padding: EdgeInsets.only(left: 19).r,
-            child: AppImage(image: widget.icon, width: 24.w, height: 24.h),
+            child: AppImage(
+              image: widget.icon,
+              width: 24.w,
+              height: 24.h,
+              color: widget.iscolor?Color(0xffDD8560):null,
+            ),
           ),
         ),
       ),

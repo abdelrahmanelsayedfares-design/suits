@@ -29,7 +29,29 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(foregroundColor: Color(0xffDD8560)),
+            ),
+            textTheme: TextTheme(
+              titleMedium: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 24.sp,
+                color: Color(0xff101623),
+              ),
+              bodySmall: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+                color: Color(0xffA1A8B0),
+              ),
+              bodyMedium: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
             inputDecorationTheme: InputDecorationTheme(
+              fillColor: Colors.white,
+              filled: true,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(24),
                 borderSide: BorderSide(color: Color(0xffE5E7EB)),
@@ -57,18 +79,9 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black,
-                textStyle: TextStyle(
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),
-          home: ForgetPasswordView(),
+          home: HomeView(),
         );
       },
     );

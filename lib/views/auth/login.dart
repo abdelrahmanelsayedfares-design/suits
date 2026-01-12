@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suits/core/logic/helper_methods.dart';
 import 'package:suits/core/ui/app_buttom.dart';
 import 'package:suits/core/ui/app_succes.dart';
+import 'package:suits/views/auth/forget_password.dart';
+import 'package:suits/views/auth/register.dart';
+import 'package:suits/views/home/view.dart';
 
 import '../../core/ui/app_images.dart';
 import '../../core/ui/app_input.dart';
@@ -19,7 +23,6 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -44,7 +47,9 @@ class _LoginViewState extends State<LoginView> {
             ),
             SizedBox(height: 10.h),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                goTo(ForgetPasswordView(),canPop: true);
+              },
               child: Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: Text(
@@ -63,7 +68,10 @@ class _LoginViewState extends State<LoginView> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) => AppSucces(text: 'Go to home',isFromLogin: true,),
+                  builder: (context) => AppSucces(text: 'Go to home',isFromLogin: true,onpressd: (){
+                    goTo(HomeView(),canPop: false);
+
+                  },),
                 );
               },
             ),
@@ -72,7 +80,9 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 Text('Don’t have an account?'),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    goTo(RegisterView(),canPop: true);
+                  },
                   child: Text(
                     'Sign Up',
                     style: TextStyle(

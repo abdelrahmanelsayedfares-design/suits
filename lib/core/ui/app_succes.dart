@@ -7,8 +7,9 @@ import 'app_images.dart';
 class AppSucces extends StatelessWidget {
   final String text;
   final bool isFromLogin;
+  final void Function() onpressd;
 
-  const AppSucces({super.key, required this.text, this.isFromLogin = false});
+  const AppSucces({super.key, required this.text, this.isFromLogin = false, required this.onpressd});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class AppSucces extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 20.h),
-          AppButtom(text: text, onPressed: () {}),
+          AppButtom(text: text, onPressed: onpressd),
         ],
       ),
     );
