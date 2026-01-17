@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/views/auth/forget_password.dart';
 import 'package:suits/views/auth/login.dart';
 import 'package:suits/views/auth/register.dart';
+import 'package:suits/views/home/my_cards.dart';
 import 'package:suits/views/home/view.dart';
 import 'package:suits/views/on_boarding2.dart';
 import 'package:suits/views/splash.dart';
@@ -27,7 +28,6 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
           theme: ThemeData(
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(foregroundColor: Color(0xffDD8560)),
@@ -48,6 +48,11 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
+              labelSmall: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
             inputDecorationTheme: InputDecorationTheme(
               fillColor: Colors.white,
@@ -64,6 +69,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: AppBarTheme(
               elevation: 0,
               scrolledUnderElevation: 0,
+              backgroundColor: Color(0xffF4F5F7),
               titleTextStyle: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 18.sp,
@@ -72,16 +78,16 @@ class MyApp extends StatelessWidget {
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(326, 56),
+                // fixedSize: Size(326, 56),
                 backgroundColor: Color(0xffDD8560),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.r),
                 ),
               ),
             ),
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+           scaffoldBackgroundColor: Color(0xffF4F5F7)
           ),
-          home: HomeView(),
+          home: MyCardsView(),
         );
       },
     );

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/core/ui/app_buttom.dart';
+import 'package:suits/core/ui/app_flash_sale.dart';
 import 'package:suits/core/ui/app_images.dart';
+import 'package:suits/core/ui/app_product_card.dart';
+
+import '../../core/ui/app_category.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
@@ -11,14 +15,6 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  final list = [
-    _CountryModel(image: 'blazar.png', test: 'Blazar'),
-    _CountryModel(image: 'shirt.png', test: 'Shirt'),
-    _CountryModel(image: 'men_shoes.png', test: 'Men Shoes'),
-    _CountryModel(image: 'women_hoes.png', test: 'Women Shoes'),
-    _CountryModel(image: 'mask_group.png', test: '???'),
-  ];
-
   final List<Categories> CategoriesModel = [
     Categories(text: 'All'),
     Categories(text: 'Newest'),
@@ -26,7 +22,7 @@ class _HomePageViewState extends State<HomePageView> {
     Categories(text: 'Men'),
     Categories(text: 'Women'),
   ];
-  int selectedIndex = 0;
+
   int categoryIndex = 0;
 
   @override
@@ -120,97 +116,25 @@ class _HomePageViewState extends State<HomePageView> {
                 ),
               ),
               SizedBox(height: 13.h),
-              SizedBox(
-                height: 100.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: list.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: selectedIndex == index
-                              ? Color(0xffDD8560).withValues(alpha: .15)
-                              : Colors.transparent,
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 50.w,
-                              height: 50.h,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Color(0xffDD8560),
-                                  width: 1,
-                                ),
-                              ),
-                              child: AppImage(image: list[index].image),
-                            ),
-                            SizedBox(height: 6.h),
-                            Text(
-                              list[index].test,
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff676767),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+              AppCategory(),
               SizedBox(height: 35.h),
               Text('Flash Sale', style: Theme.of(context).textTheme.bodyMedium),
               SizedBox(height: 40.h),
-              SizedBox(
-                height: 24.h,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: CategoriesModel.length,
-                  separatorBuilder: (context, index) => SizedBox(width: 12.w),
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        setState(() {
-                          categoryIndex = index;
-                        });
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12.w,
-                          vertical: 4.h,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: categoryIndex == index
-                              ? Color(0xffDD8560)
-                              : Colors.white,
-                        ),
-                        child: Text(
-                          CategoriesModel[index].text,
-                          style: TextStyle(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w600,
-                            color: categoryIndex == index
-                                ? Colors.white
-                                : Colors.black,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
+              AppFlashSale(),
+              SizedBox(height: 44.h),
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 22,
+                  crossAxisSpacing: 28,
+                  childAspectRatio: 147 / 151,
                 ),
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return AppProductCard();
+                },
               ),
             ],
           ),
@@ -218,16 +142,4 @@ class _HomePageViewState extends State<HomePageView> {
       ),
     );
   }
-}
-
-class _CountryModel {
-  final String image, test;
-
-  _CountryModel({required this.image, required this.test});
-}
-
-class Categories {
-  final String text;
-
-  Categories({required this.text});
 }

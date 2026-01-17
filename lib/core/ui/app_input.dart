@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suits/core/ui/app_buttom.dart';
 
 import 'app_images.dart';
 
 class AppInput extends StatefulWidget {
-  final String hint, icon;
+  final String hint;
+  final String? icon;
   final bool isBass;
   final bool iscolor;
+  final bool isButton;
 
   const AppInput({
     super.key,
     required this.hint,
-    required this.icon,
+    this.icon,
     this.isBass = false,
-    this.iscolor=false,
+    this.iscolor = false,
+    this.isButton = false,
   });
 
   @override
@@ -48,17 +52,24 @@ class _AppInputState extends State<AppInput> {
                           height: 24.h,
                         ),
                 )
+              : widget.isButton
+              ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AppButtom(text: 'Apply', onPressed: () {},size: Size(88.96430969238281, 24),),
+              )
               : null,
           hintText: widget.hint,
-          prefixIcon: Padding(
-            padding: EdgeInsets.only(left: 19).r,
-            child: AppImage(
-              image: widget.icon,
-              width: 24.w,
-              height: 24.h,
-              color: widget.iscolor?Color(0xffDD8560):null,
-            ),
-          ),
+          prefixIcon: widget.icon == null
+              ? null
+              : Padding(
+                  padding: EdgeInsets.only(left: 19).r,
+                  child: AppImage(
+                    image: widget.icon!,
+                    width: 24.w,
+                    height: 24.h,
+                    color: widget.iscolor ? Color(0xffDD8560) : null,
+                  ),
+                ),
         ),
       ),
     );
