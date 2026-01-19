@@ -5,19 +5,19 @@ import 'package:suits/core/ui/app_buttom.dart';
 import 'app_images.dart';
 
 class AppInput extends StatefulWidget {
-  final String hint;
-  final String? icon;
+  final String? icon, label, hint;
   final bool isBass;
   final bool iscolor;
   final bool isButton;
 
   const AppInput({
     super.key,
-    required this.hint,
+    this.hint,
     this.icon,
     this.isBass = false,
     this.iscolor = false,
     this.isButton = false,
+    this.label,
   });
 
   @override
@@ -54,11 +54,16 @@ class _AppInputState extends State<AppInput> {
                 )
               : widget.isButton
               ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AppButtom(text: 'Apply', onPressed: () {},size: Size(88.96430969238281, 24),),
-              )
+                  padding: const EdgeInsets.all(8.0),
+                  child: AppButtom(
+                    text: 'Apply',
+                    onPressed: () {},
+                    size: Size(88.96430969238281, 24),
+                  ),
+                )
               : null,
           hintText: widget.hint,
+          labelText: widget.label,
           prefixIcon: widget.icon == null
               ? null
               : Padding(

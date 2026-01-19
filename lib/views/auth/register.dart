@@ -4,7 +4,7 @@ import 'package:suits/core/logic/helper_methods.dart';
 import 'package:suits/core/ui/app_buttom.dart';
 import 'package:suits/core/ui/app_check_box.dart';
 import 'package:suits/core/ui/app_input.dart';
-import 'package:suits/core/ui/app_succes.dart';
+import 'package:suits/core/ui/app_success.dart';
 import 'package:suits/views/auth/login.dart';
 
 import '../../core/ui/app_images.dart';
@@ -39,6 +39,7 @@ class _RegisterViewState extends State<RegisterView> {
         ).copyWith(bottom: 0).r,
         physics: BouncingScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppInput(hint: 'Enter your name', icon: 'user.png'),
             SizedBox(height: 16.h),
@@ -58,7 +59,7 @@ class _RegisterViewState extends State<RegisterView> {
                 showDialog(
                   context: context,
                   builder: (context) =>
-                      AppSucces(text: 'Sign In', onpressd: () {
+                      AppSuccess(text: 'Sign In', onpressd: () {
                         goTo(LoginView(),canPop: false);
                       }),
                 );

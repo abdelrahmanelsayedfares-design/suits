@@ -10,19 +10,22 @@ class AppButtom extends StatelessWidget {
   final Color? color;
   final Size? size;
   final String? icon;
+  final bool colorText;
   const AppButtom({
     super.key,
     required this.text,
     required this.onPressed,
     this.color,
     this.size,
-    this.icon,  this.isLoading=false,
+    this.icon,
+    this.isLoading = false,
+    this.colorText = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    if(isLoading){
-      return Center(child: CircularProgressIndicator(),);
+    if (isLoading) {
+      return Center(child: CircularProgressIndicator());
     }
 
     return ElevatedButton.icon(
@@ -37,7 +40,7 @@ class AppButtom extends StatelessWidget {
         style: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color:colorText?Color(0xffDD8560):Colors.white,
         ),
       ),
     );

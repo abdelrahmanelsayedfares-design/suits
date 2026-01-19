@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/core/logic/helper_methods.dart';
 import 'package:suits/core/ui/app_buttom.dart';
 import 'package:suits/core/ui/app_input.dart';
-import 'package:suits/core/ui/app_succes.dart';
+import 'package:suits/core/ui/app_success.dart';
 import 'package:suits/views/auth/login.dart';
 
 import '../../core/ui/app_images.dart';
@@ -29,6 +29,7 @@ class CreatNewPasswordiew extends StatelessWidget {
         ).copyWith(bottom: 0).r,
         physics: BouncingScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               'Create New Password',
@@ -56,7 +57,7 @@ class CreatNewPasswordiew extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) =>
-                      AppSucces(text: 'Sign In', onpressd: () {
+                      AppSuccess(text: 'Sign In', onpressd: () {
                         goTo(LoginView(),canPop: false);
                       }),
                 );

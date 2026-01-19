@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app_images.dart';
+import 'app_qty_button.dart';
 
 class CartItemWidget extends StatefulWidget {
   const CartItemWidget({super.key});
@@ -18,7 +19,8 @@ class _CartItemWidgetState extends State<CartItemWidget> {
     return SizedBox(
       height: 143.h,
       width: double.infinity,
-      child: Row(
+      child:
+      Row(
         children: [
           AppImage(
             image:
@@ -59,46 +61,25 @@ class _CartItemWidgetState extends State<CartItemWidget> {
               ],
             ),
           ),
-          Container(
-            width: 24.w,
-            height: 25.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadiusGeometry.circular(5),
-              color: Colors.white,
-            ),
-            child: IconButton(
-              onPressed: () {
-                if (countIndex > 1) {
-                  setState(() {
-                    countIndex--;
-                  });
-                }
-              },
-              icon: AppImage(image: 'minus.svg'),
-            ),
-          ),
+     AppQtyButton(icon: 'minus.svg', onTap: (){
+       if(countIndex>1){
+         setState(() {
+           countIndex--;
+         });
+       }
+     },isMinus: true,),
           SizedBox(width: 9.w),
           Text(
             countIndex.toString(),
             style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
           ),
           SizedBox(width: 9.w),
-          Container(
-            width: 24.w,
-            height: 25.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadiusGeometry.circular(5),
-              color: Color(0xffDD8560),
-            ),
-            child: IconButton(
-              onPressed: () {
-                setState(() {
-                  countIndex++;
-                });
-              },
-              icon: AppImage(image: 'plus.svg'),
-            ),
-          ),
+          AppQtyButton(icon: 'plus.svg',onTap: (){
+            setState(() {
+              countIndex++;
+            });
+            
+          },),
         ],
       ),
     );

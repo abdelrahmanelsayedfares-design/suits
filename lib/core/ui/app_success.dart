@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_buttom.dart';
 import 'app_images.dart';
 
-class AppSucces extends StatelessWidget {
+class AppSuccess extends StatelessWidget {
   final String text;
   final bool isFromLogin;
   final void Function() onpressd;
 
-  const AppSucces({super.key, required this.text, this.isFromLogin = false, required this.onpressd});
+  const AppSuccess({super.key, required this.text, this.isFromLogin = false, required this.onpressd});
 
   @override
   Widget build(BuildContext context) {

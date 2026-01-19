@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/views/auth/forget_password.dart';
 import 'package:suits/views/auth/login.dart';
 import 'package:suits/views/auth/register.dart';
+import 'package:suits/views/home/add_address.dart';
+import 'package:suits/views/home/add_card.dart';
 import 'package:suits/views/home/my_cards.dart';
+import 'package:suits/views/home/payment.dart';
 import 'package:suits/views/home/view.dart';
 import 'package:suits/views/on_boarding2.dart';
 import 'package:suits/views/splash.dart';
@@ -38,6 +41,11 @@ class MyApp extends StatelessWidget {
                 fontSize: 24.sp,
                 color: Color(0xff101623),
               ),
+              titleSmall:TextStyle(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ) ,
               bodySmall: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
@@ -87,7 +95,7 @@ class MyApp extends StatelessWidget {
             ),
            scaffoldBackgroundColor: Color(0xffF4F5F7)
           ),
-          home: MyCardsView(),
+          home: SplashView(),
         );
       },
     );

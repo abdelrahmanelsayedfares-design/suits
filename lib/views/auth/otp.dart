@@ -25,10 +25,12 @@ class OtpView extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 17,vertical: 33).copyWith(bottom: 0).r,
         physics: BouncingScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               'Enter Verification Code',
               style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 8.h),
             Text.rich(
@@ -42,6 +44,7 @@ class OtpView extends StatelessWidget {
                   ),
                 ],
               ),
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             SizedBox(height: 33.h),

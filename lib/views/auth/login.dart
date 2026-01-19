@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/core/logic/helper_methods.dart';
 import 'package:suits/core/ui/app_buttom.dart';
-import 'package:suits/core/ui/app_succes.dart';
+import 'package:suits/core/ui/app_success.dart';
 import 'package:suits/views/auth/forget_password.dart';
 import 'package:suits/views/auth/register.dart';
 import 'package:suits/views/home/view.dart';
@@ -35,7 +35,7 @@ class _LoginViewState extends State<LoginView> {
         padding: EdgeInsets.symmetric(horizontal: 17).r,
         physics: BouncingScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Center(child: Text('Hi Welcome back, you’ve been missed')),
             SizedBox(height: 39.h),
@@ -68,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) => AppSucces(text: 'Go to home',isFromLogin: true,onpressd: (){
+                  builder: (context) => AppSuccess(text: 'Go to home',isFromLogin: true,onpressd: (){
                     goTo(HomeView(),canPop: false);
 
                   },),

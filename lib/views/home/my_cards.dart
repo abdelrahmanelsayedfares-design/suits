@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suits/core/logic/helper_methods.dart';
 import 'package:suits/core/ui/app_buttom.dart';
 import 'package:suits/core/ui/app_input.dart';
 import '../../core/ui/app_cart_item.dart';
 import '../../core/ui/app_images.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+
+import '../../core/ui/app_item_dialog.dart';
+import 'check_out.dart';
 
 class MyCardsView extends StatefulWidget {
   const MyCardsView({super.key});
@@ -13,7 +18,7 @@ class MyCardsView extends StatefulWidget {
 }
 
 class _MyCardsViewState extends State<MyCardsView> {
-
+  List<int> cartItems = List.generate(10, (index) => index);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +48,9 @@ class _MyCardsViewState extends State<MyCardsView> {
                 style: TextStyle(color: Color(0xffB5B5B5)),
               ),
               _PriceList(text: 'Total Cost', price: '\$397.94'),
-              AppButtom(text: 'Proceed to Checkout', onPressed: () {}),
+              AppButtom(text: 'Proceed to Checkout', onPressed: () {
+                goTo(CheckOutView(),canPop: true);
+              }),
             ],
           ),
         ),
@@ -59,24 +66,91 @@ class _MyCardsViewState extends State<MyCardsView> {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 17,
-            vertical: 33,
-          ).copyWith(bottom: 0).r,
-          child: ListView.separated(
-            separatorBuilder: (context, index) {
-              return
-                Divider(
-                thickness: 1,
-                color: Colors.grey.shade300,
-              );
-            },
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return CartItemWidget();
-            },
-          ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 17,
+          vertical: 33,
+        ).copyWith(bottom: 0).r,
+        child: ListView.separated(
+          separatorBuilder: (context, index) {
+            return Divider(thickness: 1, color: Colors.grey.shade300);
+          },
+          itemCount: cartItems.length,
+          itemBuilder: (context, index) {
+            return Slidable(
+              key: ValueKey(cartItems[index]),
+              endActionPane: ActionPane(
+                motion: StretchMotion(),
+                extentRatio: 0.25,
+                children: [
+                  SlidableAction(
+                    onPressed: (context) async {
+                      final result = await showDialog<bool>(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            insetPadding: EdgeInsets.symmetric(horizontal: 20).r,
+                            content: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                maxWidth: 320.w,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text('Remove from card?'),
+                                  SizedBox(height: 26.h),
+                                  Divider(color: Color(0xffB5B5B5), height: 2),
+                                  SizedBox(height: 51.h),
+                                  CartItemDialogWidget(),
+                                  SizedBox(height: 61.h),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment. spaceBetween,
+                                    children: [
+                                      AppButtom(
+                                        text: 'Cancel',
+                                        colorText: true,
+                                        onPressed: () {
+                                          Navigator.pop(context, false);
+                                        },
+                                        color: Color(0xffD3D3D3),
+                                      ),
+
+                                      AppButtom(
+                                        text: 'Yes,Remove',
+                                        onPressed: () {
+                                          Navigator.pop(context, true);
+                                        },
+
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+
+                      if (result == true) {
+                        setState(() {
+                          cartItems.removeAt(index);
+                        });
+                      }
+                    },
+                    backgroundColor: Color(0xffDB5050).withValues(alpha: .50),
+                    foregroundColor: Colors.red,
+                    icon: Icons.delete_rounded,
+                    label: '',
+                  ),
+                ],
+              ),
+
+              child: CartItemWidget(),
+
+            );
+          },
         ),
+      ),
     );
   }
 }
@@ -110,4 +184,3 @@ class _PriceList extends StatelessWidget {
     );
   }
 }
-

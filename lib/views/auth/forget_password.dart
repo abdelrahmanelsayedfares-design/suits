@@ -27,6 +27,7 @@ class ForgetPasswordView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 17).r,
           physics: BouncingScrollPhysics(),
           child: Column(
+
             children: [
               Text(
                 'Forgot Your Password?',
@@ -98,6 +99,7 @@ class _TabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         AppInput(hint: text, icon: icon, iscolor: true),
         SizedBox(height: 32.h),
