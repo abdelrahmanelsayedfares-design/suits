@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'app_buttom.dart';
 import 'app_images.dart';
 
 class AppSuccess extends StatelessWidget {
   final String text;
   final bool isFromLogin;
-  final void Function() onpressd;
+  final VoidCallback onPressd;
 
-  const AppSuccess({super.key, required this.text, this.isFromLogin = false, required this.onpressd});
+  const AppSuccess({
+    super.key,
+    required this.text,
+    this.isFromLogin = false,
+    required this.onPressd,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,7 @@ class AppSuccess extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 20.h),
-          AppButtom(text: text, onPressed: onpressd),
+          AppButtom(text: text, onPressed: onPressd),
         ],
       ),
     );

@@ -11,7 +11,7 @@ import '../../core/ui/app_images.dart';
 import '../../core/ui/app_input.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({super.key});
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -37,7 +37,13 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(child: Text('Hi Welcome back, you’ve been missed')),
+            Center(
+              child: Text(
+                'Hi Welcome back, you’ve been missed',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+              ),
+            ),
             SizedBox(height: 39.h),
             AppInput(icon: 'email.png', hint: 'Enter your email'),
             AppInput(
@@ -48,7 +54,7 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(height: 10.h),
             TextButton(
               onPressed: () {
-                goTo(ForgetPasswordView(),canPop: true);
+                goTo(ForgetPasswordView(), canPop: true);
               },
               child: Align(
                 alignment: AlignmentDirectional.centerEnd,
@@ -68,20 +74,26 @@ class _LoginViewState extends State<LoginView> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) => AppSuccess(text: 'Go to home',isFromLogin: true,onpressd: (){
-                    goTo(HomeView(),canPop: false);
-
-                  },),
+                  builder: (context) => AppSuccess(
+                    text: 'Go to home',
+                    isFromLogin: true,
+                    onPressd: () {
+                      goTo(HomeView(), canPop: false);
+                    },
+                  ),
                 );
               },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Don’t have an account?'),
+                Text(
+                  'Don’t have an account?',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
                 TextButton(
                   onPressed: () {
-                    goTo(RegisterView(),canPop: true);
+                    goTo(RegisterView(), canPop: true);
                   },
                   child: Text(
                     'Sign Up',
@@ -139,7 +151,6 @@ class _AppAuth extends StatelessWidget {
   final void Function() onTap;
 
   const _AppAuth({
-    super.key,
     required this.image,
     required this.text,
     required this.onTap,

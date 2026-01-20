@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:suits/views/auth/forget_password.dart';
-import 'package:suits/views/auth/login.dart';
-import 'package:suits/views/auth/register.dart';
-import 'package:suits/views/home/add_address.dart';
-import 'package:suits/views/home/add_card.dart';
-import 'package:suits/views/home/my_cards.dart';
-import 'package:suits/views/home/payment.dart';
-import 'package:suits/views/home/view.dart';
-import 'package:suits/views/on_boarding2.dart';
 import 'package:suits/views/splash.dart';
-
 import 'core/logic/helper_methods.dart';
-import 'views/on_boarding.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -62,18 +52,18 @@ class MyApp extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            inputDecorationTheme: InputDecorationTheme(
-              fillColor: Colors.white,
-              filled: true,
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(24),
-                borderSide: BorderSide(color: Color(0xffE5E7EB)),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(24),
-                borderSide: BorderSide(color: Color(0xffE5E7EB)),
-              ),
-            ),
+            // inputDecorationTheme: InputDecorationTheme(
+            //   fillColor: Colors.white,
+            //   filled: true,
+            //   focusedBorder: OutlineInputBorder(
+            //     borderRadius: BorderRadius.circular(24),
+            //     borderSide: BorderSide(color: Color(0xffE5E7EB)),
+            //   ),
+            //   enabledBorder: OutlineInputBorder(
+            //     borderRadius: BorderRadius.circular(24),
+            //     borderSide: BorderSide(color: Color(0xffE5E7EB)),
+            //   ),
+            // ),
             appBarTheme: AppBarTheme(
               elevation: 0,
               scrolledUnderElevation: 0,

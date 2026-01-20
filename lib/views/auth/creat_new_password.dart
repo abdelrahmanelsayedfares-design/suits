@@ -57,7 +57,7 @@ class CreatNewPasswordiew extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) =>
-                      AppSuccess(text: 'Sign In', onpressd: () {
+                      AppSuccess(text: 'Sign In', onPressd: () {
                         goTo(LoginView(),canPop: false);
                       }),
                 );

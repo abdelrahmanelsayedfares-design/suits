@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/core/ui/app_buttom.dart';
-
 import 'app_images.dart';
 
 class AppInput extends StatefulWidget {
@@ -9,6 +8,8 @@ class AppInput extends StatefulWidget {
   final bool isBass;
   final bool iscolor;
   final bool isButton;
+  final Color? color;
+  final BorderRadius? borderRadius;
 
   const AppInput({
     super.key,
@@ -18,6 +19,8 @@ class AppInput extends StatefulWidget {
     this.iscolor = false,
     this.isButton = false,
     this.label,
+    this.color,
+    this.borderRadius,
   });
 
   @override
@@ -34,6 +37,16 @@ class _AppInputState extends State<AppInput> {
       child: TextFormField(
         obscureText: widget.isBass ? _obscureText : false,
         decoration: InputDecoration(
+          filled: true,
+          fillColor: Color(0xffF9FAFB),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(24),
+            borderSide: BorderSide(color: widget.color ?? Color(0xffE5E7EB)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(24),
+            borderSide: BorderSide(color: widget.color ?? Color(0xffE5E7EB)),
+          ),
           suffixIcon: widget.isBass
               ? IconButton(
                   onPressed: () {

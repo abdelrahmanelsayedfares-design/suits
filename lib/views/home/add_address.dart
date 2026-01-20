@@ -30,11 +30,11 @@ class AddAddressView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            AppInput(label: 'Title'),
-            AppInput(label: 'Address'),
-            AppInput(label: 'Building No'),
-            AppInput(label: 'Floor No'),
-            AppInput(label: 'Apartment No'),
+            AppInput(label: 'Title',borderRadius: BorderRadius.circular(10),color: Color(0xffAFAFAF),),
+            AppInput(label: 'Address',borderRadius: BorderRadius.circular(10),color: Color(0xffAFAFAF),),
+            AppInput(label: 'Building No',borderRadius: BorderRadius.circular(10),color: Color(0xffAFAFAF),),
+            AppInput(label: 'Floor No',borderRadius: BorderRadius.circular(10),color: Color(0xffAFAFAF),),
+            AppInput(label: 'Apartment No',borderRadius: BorderRadius.circular(10),color: Color(0xffAFAFAF),),
             SizedBox(height: 127.h),
             AppButtom(text: 'Save', onPressed: () {}),
           ],
